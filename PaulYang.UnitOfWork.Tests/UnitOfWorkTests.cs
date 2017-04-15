@@ -129,10 +129,7 @@ namespace PaulYang.UnitOfWork.Tests
         {
             var mockRepository = new Mock<IUnitOfWorkRepository>();
             mockRepository.Setup(x => x.PersistNewItem(It.IsAny<IEntityBase>())).Returns(() => 1);
-            mockRepository.Setup(x => x.PersistDeleteItem(It.IsAny<IEntityBase>())).Returns(() =>
-            {
-                throw new ContextMarshalException();
-            });
+            mockRepository.Setup(x => x.PersistDeleteItem(It.IsAny<IEntityBase>())).Throws(new Exception());
             mockRepository.Setup(x => x.PersistUpdateItem(It.IsAny<IEntityBase>())).Returns(() => 1);
 
             var fackRepository = mockRepository.Object;
