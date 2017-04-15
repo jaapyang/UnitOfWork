@@ -129,6 +129,7 @@ namespace PaulYang.UnitOfWork.Tests
         {
             var mockRepository = new Mock<IUnitOfWorkRepository>();
             mockRepository.Setup(x => x.PersistNewItem(It.IsAny<IEntityBase>())).Returns(() => 1);
+            // change the exception throw by method Mock.Throws<T>
             mockRepository.Setup(x => x.PersistDeleteItem(It.IsAny<IEntityBase>())).Throws(new Exception());
             mockRepository.Setup(x => x.PersistUpdateItem(It.IsAny<IEntityBase>())).Returns(() => 1);
 
